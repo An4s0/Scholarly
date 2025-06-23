@@ -4,7 +4,7 @@ interface Publication {
   citations: number;
 }
 
-export interface Profile {
+export interface IProfile {
   name: string;
   url: string;
   citations: number;
