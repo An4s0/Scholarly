@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
+import AppProviders from "./providers";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Scholarly",
-  description: "A platform for monitoring and analyzing academic research performance using Google Scholar data.",
+  title: {
+    default: "Scholarly",
+    template: "Scholarly - %s",
+  },
+  description:
+    "Analyze multiple Google Scholar profiles and track citations, publications, and trends over time.",
 };
 
 export default function RootLayout({
@@ -14,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        {children}
+        <AppProviders>{children}</AppProviders>
       </body>
     </html>
   );
