@@ -1,9 +1,9 @@
-import NextAuth from "next-auth";
+import NextAuth, { NextAuthOptions } from "next-auth";
 import AzureAD from "next-auth/providers/azure-ad";
 import connect from "@/lib/mongodb";
 import User from "@/models/user";
 
-const handler = NextAuth({
+export const authOptions: NextAuthOptions = {
   providers: [
     AzureAD({
       clientId: process.env.AZURE_AD_CLIENT_ID as string,
@@ -49,6 +49,8 @@ const handler = NextAuth({
       return session;
     },
   },
-});
+};
+
+const handler = NextAuth(authOptions);
 
 export { handler as GET, handler as POST };
